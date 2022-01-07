@@ -1,13 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Colors } from '../../constants'
 
 const CustomButton = ({ title, onPress }) => {
     return (
-        <View>
+        <View >
             <TouchableOpacity onPress={onPress}>
-                <View>
-                    <Text>
+                <View style={{ backgroundColor: Colors.white, margin: 10, padding: 10, justifyContent: "center", alignItems: "center" }}>
+                    <Text style={{ color: Colors.black, fontWeight: "bold" }}>
                         {title}
                     </Text>
                 </View>
