@@ -23,21 +23,27 @@ const LoginScreen = () => {
                 <Image source={Images.logo} />
             </View>
             <View>
-                <Input
-                    value={email}
-                    onChangeText={(email) => setEmail(email)}
-                    placeholder="e-mail:"
-                    placeholderTextColor={Colors.white}
+                <View style={{ marginBottom: 10 }}>
+                    <Input
+                        value={email}
+                        onChangeText={(email) => setEmail(email)}
+                        placeholder="e-mail:"
+                        placeholderTextColor={Colors.white}
+
+                    />
+                </View>
 
 
-                />
-                <Input
-                    value={password}
-                    onChangeText={(password) => setPassword(password)}
-                    placeholder="şifre:"
-                    placeholderTextColor={Colors.white}
+                <View>
+                    <Input
+                        value={password}
+                        onChangeText={(password) => setPassword(password)}
+                        placeholder="şifre:"
+                        placeholderTextColor={Colors.white}
 
-                />
+                    />
+                </View>
+
             </View>
             <View style={{ marginVertical: 70 }}>
                 <CustomButton title="Giriş Yap" onPress={() => console.log("tıklandı")} />

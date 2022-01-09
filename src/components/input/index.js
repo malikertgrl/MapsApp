@@ -11,7 +11,7 @@ const Input = ({ onChangeText, value, placeholder, placeholderTextColor }) => {
     }, [])
 
     return (
-        <View>
+        <View >
             {/* <Icon name="rocket" size={30} color="#900" />; */}
             <TextInput
                 style={{ color: Colors.white, borderBottomWidth: 1, borderBottomColor: Colors.white }}
