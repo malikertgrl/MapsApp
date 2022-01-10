@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
 import { Colors, Images } from "../constants"
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 
 const LoginScreen = () => {
 
@@ -31,20 +33,26 @@ const LoginScreen = () => {
                         onChangeText={(email) => setEmail(email)}
                         placeholder="e-mail:"
                         placeholderTextColor={Colors.white}
+                        secureIcon={false}
 
                     />
                 </View>
 
 
                 <View>
-                    <Input
-                        IconName={"lock"}
-                        value={password}
-                        onChangeText={(password) => setPassword(password)}
-                        placeholder="şifre:"
-                        placeholderTextColor={Colors.white}
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <Input
+                            IconName={"lock"}
+                            value={password}
+                            onChangeText={(password) => setPassword(password)}
+                            placeholder="şifre:"
+                            placeholderTextColor={Colors.white}
+                            secureIcon={true}
 
-                    />
+                        />
+
+                    </View>
+
                 </View>
                 <View>
                     <CheckBox />

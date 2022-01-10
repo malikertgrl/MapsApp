@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Colors } from '../../constants'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 
-const Input = ({ onChangeText, value, placeholder, placeholderTextColor, IconName }) => {
+const Input = ({
+    onChangeText,
+    value,
+    placeholder,
+    placeholderTextColor,
+    IconName,
+    secureTextEntry,
+    secureIcon
+}) => {
+    const [isShownSecureIcon, setIsShownSecureIcon] = useState(false)
+
 
     useEffect(() => {
         console.log("ınput")
@@ -24,7 +34,16 @@ const Input = ({ onChangeText, value, placeholder, placeholderTextColor, IconNam
                     value={value}
                     placeholder={placeholder}
                     placeholderTextColor={placeholderTextColor}
+                    secureTextEntry={isShownSecureIcon}
                 />
+            </View>
+            <View style={{ margin: 10 }}>
+                {secureIcon ?
+
+                    <TouchableOpacity onPress={() => setIsShownSecureIcon(val => !val)} >
+                        <FontAwesome5 name={isShownSecureIcon ? "eye-slash" : "eye"} size={20} color="#fff" />
+                    </TouchableOpacity>
+                    : <></>}
             </View>
 
 
