@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { View, Text, Image } from 'react-native'
 import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
+import CheckBox from '../components/checkBox'
 import { Colors, Images } from "../constants"
 
 const LoginScreen = () => {
@@ -25,6 +26,7 @@ const LoginScreen = () => {
             <View>
                 <View style={{ marginBottom: 10 }}>
                     <Input
+                        IconName={"envelope"}
                         value={email}
                         onChangeText={(email) => setEmail(email)}
                         placeholder="e-mail:"
@@ -36,6 +38,7 @@ const LoginScreen = () => {
 
                 <View>
                     <Input
+                        IconName={"lock"}
                         value={password}
                         onChangeText={(password) => setPassword(password)}
                         placeholder="şifre:"
@@ -43,9 +46,12 @@ const LoginScreen = () => {
 
                     />
                 </View>
+                <View>
+                    <CheckBox />
+                </View>
 
             </View>
-            <View style={{ marginVertical: 70 }}>
+            <View style={{ marginVertical: 10 }}>
                 <CustomButton title="Giriş Yap" onPress={() => console.log("tıklandı")} />
 
             </View>
