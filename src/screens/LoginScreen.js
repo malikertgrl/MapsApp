@@ -4,7 +4,6 @@ import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
 import { Colors, Images } from "../constants"
-import { NavigationContainer } from "@react-navigation/native"
 
 
 const LoginScreen = ({ navigation }) => {
@@ -16,6 +15,8 @@ const LoginScreen = ({ navigation }) => {
     useEffect(() => {
         console.log("loginScrren")
         console.log("colo", Images)
+        console.log("navigation", navigation)
+
 
     }, [])
 
@@ -62,7 +63,7 @@ const LoginScreen = ({ navigation }) => {
 
                 </View>
                 <View >
-                    <CustomButton title="Giriş Yap" onPress={() => navigation.navigate("HomeScreen")} />
+                    <CustomButton title="Giriş Yap" onPress={() => navigation.navigate("Home")} />
 
                 </View>
             </View>

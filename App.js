@@ -7,9 +7,9 @@ import RootNavigation from "./src/navigation/RootNavigation"
 const App = () => {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.backGroundColor, }}>
+      <StatusBar backgroundColor={Colors.backGroundColor} />
       <RootNavigation />
-      {/* <StatusBar backgroundColor={Colors.backGroundColor} />
-      <LoginScreen /> */}
+
     </View>
   )
 }
