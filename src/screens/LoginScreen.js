@@ -4,7 +4,6 @@ import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
 import { Colors, Images } from "../constants"
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 const LoginScreen = () => {
@@ -19,14 +18,19 @@ const LoginScreen = () => {
 
     }, [])
 
+    // const userInfo = {
+    //     email: "",
+    //     password: ""
+    // }
+
     return (
-        <View style={{ marginHorizontal: 20, }}>
+        <View style={{ marginHorizontal: 10, }}>
 
             <View style={{ marginTop: 50, alignItems: "center" }}>
                 <Image source={Images.logo} />
             </View>
             <View>
-                <View style={{ marginBottom: 10 }}>
+                <View>
                     <Input
                         IconName={"envelope"}
                         value={email}
@@ -40,7 +44,7 @@ const LoginScreen = () => {
 
 
                 <View>
-                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <View >
                         <Input
                             IconName={"lock"}
                             value={password}
@@ -59,7 +63,7 @@ const LoginScreen = () => {
                 </View>
 
             </View>
-            <View style={{ marginVertical: 10 }}>
+            <View >
                 <CustomButton title="Giriş Yap" onPress={() => console.log("tıklandı")} />
 
             </View>

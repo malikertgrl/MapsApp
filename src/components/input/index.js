@@ -22,7 +22,7 @@ const Input = ({
     }, [])
 
     return (
-        <View style={{ flexDirection: "row", alignItems: "center", margin: 10, borderBottomWidth: 1, borderBottomColor: Colors.white }}>
+        <View style={styles.containerStyle}>
             <View style={{ margin: 10 }}>
                 <FontAwesome5 name={IconName} size={20} color="#fff" />
 
@@ -53,4 +53,12 @@ const Input = ({
 
 export default Input
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    containerStyle: {
+        flexDirection: "row",
+        alignItems: "center",
+        margin: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.white
+    },
+})

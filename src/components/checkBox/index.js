@@ -14,7 +14,7 @@ const CheckBox = () => {
     }
 
     return (
-        <View style={{ marginVertical: 20, flexDirection: "row", }}>
+        <View style={styles.containerStyle}>
             <View style={styles.iconStyle}>
                 <TouchableOpacity onPress={() => handleActivity()}>
                     {isChecked ?
@@ -42,5 +42,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         alignItems: "center",
         justifyContent: "center"
-    }
+    },
+    containerStyle: { marginVertical: 20, flexDirection: "row", alignItems: "center" }
 })
