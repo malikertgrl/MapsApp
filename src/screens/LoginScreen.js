@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
@@ -7,34 +7,48 @@ import { Colors, Images } from "../constants"
 
 
 const LoginScreen = ({ navigation }) => {
+    // const [email, setEmail] = useState("")
+    // const [password, setPassword] = useState("")
 
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [rememberMe, setRememberMe] = useState(true)
+    const [pageData, setPageData] = useState({
+        username: "malik.11@gmail.com",
+        password: "123456"
+    })
 
     useEffect(() => {
         console.log("loginScrren")
         console.log("colo", Images)
-        console.log("navigation", navigation)
+        console.log(pageData)
 
 
     }, [])
+
+    const onChangeText = (key, value) => {
+        setPageData(page => ({ ...page, [key]: value }))
+    }
+
+    const handleRememberMe = () => {
+        setRememberMe(remember => !remember)
+        console.log({ rememberMe });
+    }
+
 
 
 
     return (
         <View style={{ flex: 1, backgroundColor: Colors.backGroundColor }}>
             <View style={{ marginHorizontal: 15 }}>
-                <View style={{ marginTop: 50, alignItems: "center", }}>
+                <View style={{ marginTop: 50, alignItems: "center" }}>
                     <Image source={Images.logo} />
                 </View>
                 <View>
                     <View>
                         <Input
                             IconName={"envelope"}
-                            value={email}
-                            onChangeText={(email) => setEmail(email)}
-                            placeholder="e-mail:"
+                            value={pageData.username}
+                            onChangeText={text => onChangeText("username", text)}
+                            placeholder="username:"
                             placeholderTextColor={Colors.white}
                             secureIcon={false}
 
@@ -46,8 +60,8 @@ const LoginScreen = ({ navigation }) => {
                         <View >
                             <Input
                                 IconName={"lock"}
-                                value={password}
-                                onChangeText={(password) => setPassword(password)}
+                                value={pageData.password}
+                                onChangeText={text => onChangeText("password", text)}
                                 placeholder="şifre:"
                                 placeholderTextColor={Colors.white}
                                 secureIcon={true}
@@ -58,7 +72,11 @@ const LoginScreen = ({ navigation }) => {
 
                     </View>
                     <View>
-                        <CheckBox />
+                        <CheckBox
+                            onChangeState={() => handleRememberMe()}
+                            checked={rememberMe}
+                            checkedColor={Colors.white}
+                        />
                     </View>
 
                 </View>
@@ -73,5 +91,7 @@ const LoginScreen = ({ navigation }) => {
         </View >
     )
 }
+
+
 
 export default LoginScreen

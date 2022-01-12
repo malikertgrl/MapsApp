@@ -4,21 +4,17 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../constants'
 
 
-const CheckBox = () => {
+const CheckBox = ({ onChangeState, checked, checkedColor }) => {
 
-    const [isChecked, setIsChecked] = useState(false)
 
-    const handleActivity = () => {
-        setIsChecked(check => !check)
-        console.log({ isChecked });
-    }
+
 
     return (
         <View style={styles.containerStyle}>
             <View style={styles.iconStyle}>
-                <TouchableOpacity onPress={() => handleActivity()}>
-                    {isChecked ?
-                        <FontAwesome5 name={"check"} size={15} color="#fff" />
+                <TouchableOpacity onPress={onChangeState}>
+                    {checked ?
+                        <FontAwesome5 name={"check"} size={15} color={checkedColor} />
                         : <FontAwesome5 name={"check"} size={15} color={Colors.backGroundColor} />}
                 </TouchableOpacity>
             </View>
