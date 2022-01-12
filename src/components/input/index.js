@@ -38,12 +38,11 @@ const Input = ({
                 />
             </View>
             <View style={{ margin: 10 }}>
-                {secureIcon ?
-
+                {secureIcon &&
                     <TouchableOpacity onPress={() => setIsShownSecureIcon(val => !val)} >
                         <FontAwesome5 name={isShownSecureIcon ? "eye-slash" : "eye"} size={20} color="#fff" />
                     </TouchableOpacity>
-                    : <></>}
+                }
             </View>
 
 
