@@ -5,9 +5,11 @@ import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
 import { Colors, Images } from "../constants"
 import DeviceInfo from 'react-native-device-info';
+import { useSelector } from "react-redux"
 
 
 const LoginScreen = ({ navigation }) => {
+    const state = useSelector(state => state.SystemReducer)
     // const [email, setEmail] = useState("")
     // const [password, setPassword] = useState("")
 
@@ -24,6 +26,7 @@ const LoginScreen = ({ navigation }) => {
         console.log("colo", Images)
         console.log(pageData)
         console.log(versionNumber)
+        console.log(state)
 
     }, [])
 
