@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         margin: 10,
         borderBottomWidth: 1,
-        borderBottomColor: Colors.white
+        borderBottomColor: Colors.white9
     },
 })
