@@ -38,12 +38,11 @@ const Input = ({
                 />
             </View>
             <View style={{ margin: 10 }}>
-                {secureIcon ?
-
+                {secureIcon &&
                     <TouchableOpacity onPress={() => setIsShownSecureIcon(val => !val)} >
                         <FontAwesome5 name={isShownSecureIcon ? "eye-slash" : "eye"} size={20} color="#fff" />
                     </TouchableOpacity>
-                    : <></>}
+                }
             </View>
 
 
@@ -59,6 +58,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         margin: 10,
         borderBottomWidth: 1,
-        borderBottomColor: Colors.white
+        borderBottomColor: Colors.white9
     },
 })

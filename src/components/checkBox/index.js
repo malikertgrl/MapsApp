@@ -4,7 +4,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../constants'
 
 
-const CheckBox = ({ onChangeState, checked, checkedColor }) => {
+
+const CheckBox = ({ onChangeState, checked, checkedColor, checkBoxTitle }) => {
 
 
 
@@ -19,7 +20,7 @@ const CheckBox = ({ onChangeState, checked, checkedColor }) => {
                 </TouchableOpacity>
             </View>
             <View>
-                <Text style={{ color: "#fff" }}>Beni Hatırla</Text>
+                <Text style={{ color: Colors.white }}>{checkBoxTitle}</Text>
 
             </View>
 

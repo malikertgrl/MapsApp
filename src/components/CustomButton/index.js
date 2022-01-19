@@ -6,8 +6,8 @@ const CustomButton = ({ title, onPress }) => {
     return (
         <View >
             <TouchableOpacity onPress={onPress}>
-                <View style={{ backgroundColor: Colors.white, margin: 10, padding: 10, justifyContent: "center", alignItems: "center" }}>
-                    <Text style={{ color: Colors.black, fontWeight: "bold" }}>
+                <View style={styles.buttonStyle}>
+                    <Text style={styles.textStyle}>
                         {title}
                     </Text>
                 </View>
@@ -18,4 +18,7 @@ const CustomButton = ({ title, onPress }) => {
 
 export default CustomButton
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    buttonStyle: { backgroundColor: Colors.white, margin: 10, padding: 10, justifyContent: "center", alignItems: "center" },
+    textStyle: { color: Colors.black, fontWeight: "bold" }
+})
