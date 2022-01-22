@@ -3,10 +3,11 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
-import { Colors, Images } from "../constants"
+import { Colors, Images, Layout } from "../constants"
 import DeviceInfo from 'react-native-device-info';
 import { useSelector } from "react-redux"
 import I18n from "../i18n"
+import CustomView from "../components/customView"
 
 
 const LoginScreen = ({ navigation }) => {
@@ -17,7 +18,6 @@ const LoginScreen = ({ navigation }) => {
 
 
 
-    const state = useSelector(state => state.SystemReducer)
     // const [email, setEmail] = useState("")
     // const [password, setPassword] = useState("")
 
@@ -29,14 +29,6 @@ const LoginScreen = ({ navigation }) => {
         password: "123456"
     })
 
-    useEffect(() => {
-        console.log("loginScrren")
-        console.log("colo", Images)
-        console.log(pageData)
-        console.log(versionNumber)
-        console.log(state)
-
-    }, [])
 
     const onChangeText = (key, value) => {
         setPageData(page => ({ ...page, [key]: value }))
@@ -51,11 +43,15 @@ const LoginScreen = ({ navigation }) => {
 
 
     return (
-        <View style={styles.containerStyle}>
+        <CustomView >
+            {/* <View style={styles.containerStyle}> */}
             <View style={styles.innerContainer}>
                 <View style={styles.image}>
-                    <Image source={Images.logo} />
+                    <Image
+                        style={{ width: Layout.windowWidth / 2, height: Layout.windowHeight / 3, resizeMode: "contain" }}
+                        source={Images.logo} />
                 </View>
+
                 <View>
                     <View>
                         <Input
@@ -96,10 +92,10 @@ const LoginScreen = ({ navigation }) => {
 
                 </View>
                 <View >
-                    <CustomButton title={loginText} onPress={() => navigation.navigate("Home")} />
+                    <CustomButton title={loginText} onPress={() => navigation.navigate("TabNavigator")} />
 
                 </View>
-                <View style={styles.versionView}>
+                <View style={[styles.versionView, { marginTop: Layout.windowHeight / 4 - 10 }]}>
                     <Text style={styles.versionText}>v{versionNumber}</Text>
 
                 </View>
@@ -107,7 +103,9 @@ const LoginScreen = ({ navigation }) => {
 
 
 
-        </View >
+            {/* </View > */}
+        </CustomView>
+
     )
 }
 
@@ -117,9 +115,9 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
     containerStyle: { flex: 1, backgroundColor: Colors.backGroundColor },
-    innerContainer: { marginHorizontal: 15 },
-    image: { marginTop: 50, alignItems: "center" },
+    innerContainer: { marginHorizontal: 15, },
+    image: { alignItems: "center" },
     versionText: { color: Colors.white },
-    versionView: { alignItems: "center", position: "relative", marginTop: 200 }
+    versionView: { alignItems: "center" }
 })
 

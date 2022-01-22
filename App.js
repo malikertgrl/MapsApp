@@ -9,11 +9,10 @@ import { Store } from "./src/redux/Store"
 const App = () => {
   return (
     <Provider store={Store}>
-      <View style={{ flex: 1, backgroundColor: Colors.backGroundColor, }}>
-        <StatusBar backgroundColor={Colors.backGroundColor} />
-        <RootNavigation />
 
-      </View>
+
+      <RootNavigation />
+
     </Provider>
 
   )
