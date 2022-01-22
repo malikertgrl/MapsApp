@@ -54,8 +54,11 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.containerStyle}>
             <View style={styles.innerContainer}>
                 <View style={styles.image}>
-                    <Image source={Images.logo} />
+                    <Image
+                        style={{ width: 200, height: 200, resizeMode: "contain" }}
+                        source={Images.logo} />
                 </View>
+
                 <View>
                     <View>
                         <Input
@@ -96,7 +99,7 @@ const LoginScreen = ({ navigation }) => {
 
                 </View>
                 <View >
-                    <CustomButton title={loginText} onPress={() => navigation.navigate("Home")} />
+                    <CustomButton title={loginText} onPress={() => navigation.navigate("TabNavigator")} />
 
                 </View>
                 <View style={styles.versionView}>
@@ -117,8 +120,8 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
     containerStyle: { flex: 1, backgroundColor: Colors.backGroundColor },
-    innerContainer: { marginHorizontal: 15 },
-    image: { marginTop: 50, alignItems: "center" },
+    innerContainer: { marginHorizontal: 15, },
+    image: { alignItems: "center" },
     versionText: { color: Colors.white },
     versionView: { alignItems: "center", position: "relative", marginTop: 200 }
 })
