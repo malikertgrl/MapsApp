@@ -2,5 +2,6 @@ export default {
     username: "Kullanıcı Adı",
     password: "şifre",
     rememberMe: "Beni Hatırla",
-    login: "Giriş Yap"
+    login: "Giriş Yap",
+    logout: "Çıkış Yap",
 }
