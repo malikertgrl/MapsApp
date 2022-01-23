@@ -8,7 +8,7 @@ const Icon = ({ name }) => {
     const { isDarkMode } = useSelector(state => state.SystemReducer)
 
 
-    return <FontAwesome5 name={name} color={isDarkMode ? "red" : "yellow"} size={25} />
+    return <FontAwesome5 name={name} color={isDarkMode ? "red" : Colors.backGroundColor} size={25} />
 
 
 

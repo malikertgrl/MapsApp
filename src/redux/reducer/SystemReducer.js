@@ -13,7 +13,7 @@ const initialState = {
     userInfo: {},
     token: "",
     language: "TR",
-    isDarkMode: true
+    isDarkMode: false
 };
 
 export const SystemReducer = (state = initialState, action) => {
