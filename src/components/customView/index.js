@@ -11,7 +11,7 @@ const CustomView = (props) => {
         const styles = {
             flex: 1,
             backgroundColor: isDarkMode ?
-                Colors.black :
+                "#212121" :
                 Colors.backGroundColor,
             ...props.style
         }
