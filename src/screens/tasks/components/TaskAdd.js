@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, FlatList } from 'react-native';
 import { Colors, Layout } from "../../../constants"
 import I18n from '../../../i18n';
 import Icon from '../../../components/Icon';
@@ -7,25 +7,39 @@ import Icon from '../../../components/Icon';
 
 const TaskAdd = () => {
     const [text, setText] = useState("")
-    const [tasks, setTasks] = useState([
-        {
-            text: "",
-            completed: false,
-            id: ""
-        }
-    ]);
+    const [tasks, setTasks] = useState([]);
 
     const addTodo = (text) => {
-        console.log("text ne geliyır", tasks);
-        setTasks({ ...tasks, text, id: Math.random() })
+        if (text === "") {
+            Alert.alert("hata", "Lütfen görev giriniz")
+        } else {
+            const newTodo = {
+                id: Math.random(),
+                task: text,
+                completed: false,
+            }
+            setTasks({ ...tasks, newTodo })
+            setText("")
+            console.log(tasks);
+
+        }
     }
 
     return (
         <View >
             <View>
-                <Text> {tasks.text}</Text>
-                <Text> {tasks.id} </Text>
-                <Text> {tasks.completed} </Text>
+                {/* <FlatList
+                    keyExtractor={item => item.id}
+                    data={tasks}
+                    renderItem={({ item }) => {
+                        return (
+                            console.log(item) ||
+                            <View>
+                                <Text> {item} </Text>
+                            </View>
+                        )
+                    }}
+                /> */}
 
             </View>
             <View style={styles.Container}>
