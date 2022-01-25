@@ -9,7 +9,7 @@ const TaskAdd = () => {
     const [text, setText] = useState("")
     const [tasks, setTasks] = useState([]);
 
-    const addTodo = (text) => {
+    const addTodo = () => {
         if (text === "") {
             Alert.alert("hata", "Lütfen görev giriniz")
         } else {
@@ -18,8 +18,11 @@ const TaskAdd = () => {
                 task: text,
                 completed: false,
             }
-            setTasks({ ...tasks, newTodo })
+
+
+            setTasks([...tasks, newTodo])
             setText("")
+
             console.log(tasks);
 
         }
@@ -49,11 +52,11 @@ const TaskAdd = () => {
                         autoCapitalize={"words"}
                         placeholder={I18n.t("tasks")}
                         placeholderTextColor={Colors.white9}
-                        onChangeText={text => setText(text)}
+                        onChangeText={setText}
                         value={text}
                     />
                 </View>
-                <TouchableOpacity onPress={() => addTodo(text)} >
+                <TouchableOpacity onPress={addTodo()} >
                     <View style={styles.IconStyle}>
                         <Icon name="plus" />
 
