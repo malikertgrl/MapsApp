@@ -10,15 +10,13 @@ const Profile = () => {
 
     const toggle_theme = (val) => {
         dispatch(set_theme(val))
-        console.log("switch", val);
+        // console.log("switch", val);
     }
 
     return (
         <CustomView>
-            <View style={{ marginTop: 100, alignItems: "center" }}>
-                <Text>
-                    isDarkMode
-                </Text>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+
                 <Switch
                     onValueChange={val => toggle_theme(val)}
                     value={isDarkMode}

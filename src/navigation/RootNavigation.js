@@ -18,7 +18,9 @@ const RootNavigation = () => {
     }, [])
     return (
         <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme} >
-            <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{
+                headerShown: false
+            }}>
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="TabNavigator" component={TabNavigator} />
             </Stack.Navigator>

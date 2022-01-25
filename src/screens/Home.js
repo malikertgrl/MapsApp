@@ -7,8 +7,7 @@ const Home = ({ navigation }) => {
 
     return (
         <CustomView>
-            <View >
-                <Text>Home</Text>
+            <View style={{ flex: 1, justifyContent: "flex-end" }}>
                 <CustomButton title={I18n.t("logout")} onPress={() => navigation.navigate("LoginScreen")} />
             </View>
         </CustomView>

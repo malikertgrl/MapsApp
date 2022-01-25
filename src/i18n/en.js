@@ -4,4 +4,6 @@ export default {
     rememberMe: "Remember Me",
     login: "Login",
     logout: "Logout",
+    tasks: "Enter Task..."
+
 }

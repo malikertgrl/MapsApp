@@ -7,7 +7,7 @@ const CustomView = (props) => {
     const { isDarkMode } = useSelector(state => state.SystemReducer)
 
     const containerStyle = useMemo(() => {
-        console.log("containerStyle", isDarkMode);
+        // console.log("containerStyle", isDarkMode);
         const styles = {
             flex: 1,
             backgroundColor: isDarkMode ?
