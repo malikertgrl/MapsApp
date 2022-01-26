@@ -4,6 +4,7 @@ export default {
     rememberMe: "Remember Me",
     login: "Login",
     logout: "Logout",
-    tasks: "Enter Task..."
+    tasks: "Enter Task...",
+    emptyInput: "Please enter task!"
 
 }

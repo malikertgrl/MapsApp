@@ -4,5 +4,6 @@ export default {
     rememberMe: "Beni Hatırla",
     login: "Giriş Yap",
     logout: "Çıkış Yap",
-    tasks: "Görev Giriniz..."
+    tasks: "Görev Giriniz...",
+    emptyInput: "Lütfen görev giriniz!"
 }

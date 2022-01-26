@@ -5,67 +5,33 @@ import I18n from '../../../i18n';
 import Icon from '../../../components/Icon';
 
 
-const TaskAdd = () => {
-    const [text, setText] = useState("")
-    const [tasks, setTasks] = useState([]);
+const TaskAdd = ({ onPress, text, onChangeText }) => {
 
-    const addTodo = () => {
-        if (text === "") {
-            Alert.alert("hata", "Lütfen görev giriniz")
-        } else {
-            const newTodo = {
-                id: Math.random(),
-                task: text,
-                completed: false,
-            }
-
-
-            setTasks([...tasks, newTodo])
-            setText("")
-
-            console.log(tasks);
-
-        }
-    }
 
     return (
-        <View >
-            <View>
-                {/* <FlatList
-                    keyExtractor={item => item.id}
-                    data={tasks}
-                    renderItem={({ item }) => {
-                        return (
-                            console.log(item) ||
-                            <View>
-                                <Text> {item} </Text>
-                            </View>
-                        )
-                    }}
-                /> */}
 
+
+        <View style={styles.Container}>
+            <View style={styles.InputStyle}>
+                <TextInput
+                    style={{ color: Colors.white, padding: 15 }}
+                    autoCapitalize={"words"}
+                    placeholder={I18n.t("tasks")}
+                    placeholderTextColor={Colors.white9}
+                    onChangeText={onChangeText}
+                    value={text}
+                />
             </View>
-            <View style={styles.Container}>
-                <View style={styles.InputStyle}>
-                    <TextInput
-                        style={{ color: Colors.white, padding: 15 }}
-                        autoCapitalize={"words"}
-                        placeholder={I18n.t("tasks")}
-                        placeholderTextColor={Colors.white9}
-                        onChangeText={setText}
-                        value={text}
-                    />
+            <TouchableOpacity onPress={onPress} >
+                <View style={styles.IconStyle}>
+                    <Icon name="plus" />
+
                 </View>
-                <TouchableOpacity onPress={addTodo()} >
-                    <View style={styles.IconStyle}>
-                        <Icon name="plus" />
-
-                    </View>
-                </TouchableOpacity>
-            </View>
-
-
+            </TouchableOpacity>
         </View>
+
+
+
     );
 };
 
@@ -74,8 +40,8 @@ export default TaskAdd;
 const styles = StyleSheet.create({
     Container: {
         flexDirection: "row",
-        flex: 1,
-        marginTop: Layout.windowHeight / 5,
+
+
 
     },
     InputStyle: {
