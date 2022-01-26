@@ -15,18 +15,33 @@ const Task = () => {
     const [list, setList] = useState([]);
     const [text, setText] = useState("")
 
-    const getList = async () => {
-        try {
-            const userTasks = await AsyncStorage.getItem(listKey)
-            return userTasks != null ? JSON.parse(userTasks) : null;
-        } catch (e) {
-            console.log("e:", e);
+    const getTasks = async () => {
+
+        const userTasks = await AsyncStorage.getItem(listKey)
+        console.log("userTasks", userTasks);
+        if (userTasks) {
+
+            const parseJson = JSON.parse(userTasks)
+            setList(parseJson)
         }
+
+    }
+
+    const setTasks = async payload => {
+
+        const stringifyData = JSON.stringify(payload)
+        await AsyncStorage.setItem(listKey, stringifyData)
+
     }
 
     useEffect(() => {
-        getList()
+        getTasks()
     }, [])
+
+
+    useEffect(() => {
+        setTasks(list)
+    }, [list])
 
     const addTodo = async (text) => {
         if (text === "") {
@@ -45,17 +60,7 @@ const Task = () => {
             };
             setList([newItem, ...list]);
             setText("")
-            try {
-
-                await AsyncStorage.setItem(listKey, JSON.stringify(list))
-
-            } catch (error) {
-                console.log(error);
-            }
-            console.log(list, "todo");
         }
-
-
     };
 
     const deleteItem = (id) => {
@@ -67,6 +72,13 @@ const Task = () => {
         <CustomView >
             <View>
                 <FlatList
+                    // ItemSeparatorComponent={() => {
+                    //     return (
+                    //         <View style={{ margin: 5 }} />
+
+
+                    //     )
+                    // }}
                     keyExtractor={item => item.id}
                     data={list}
                     renderItem={({ item }) =>

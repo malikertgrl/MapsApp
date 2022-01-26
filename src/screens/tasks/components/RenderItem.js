@@ -1,32 +1,34 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Icon from "../../../components/Icon"
+import { Colors } from '../../../constants';
+import { useSelector } from 'react-redux';
 
 const RenderItem = ({ item, onPress }) => {
     const [isComplete, setIsComplete] = useState(false)
+    const { isDarkMode } = useSelector(state => state.SystemReducer)
     return (
 
-        // console.log(item) ||
 
-        <View style={styles.renderStyle}>
+        <View style={[styles.renderStyle, { backgroundColor: isDarkMode ? Colors.black5 : Colors.cartColor, }]}>
 
-            <View>
+            <View >
                 <Text style={[styles.textStyle, { textDecorationLine: isComplete ? "line-through" : null }]}> {item.task} </Text>
 
             </View>
             <View style={{ flexDirection: "row", }}>
                 <View style={styles.IconStyle}>
                     <TouchableOpacity onPress={() => setIsComplete(true)}>
-                        <View>
-                            <Icon name="check" color="green" />
+                        <View style={styles.IconViewStyle}>
+                            <Icon name="check" color="green" size={20} />
 
                         </View>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.IconStyle}>
                     <TouchableOpacity onPress={onPress} >
-                        <View >
-                            <Icon name="trash" color="red" />
+                        <View style={styles.IconViewStyle} >
+                            <Icon name="trash" color="red" size={20} />
 
                         </View>
                     </TouchableOpacity>
@@ -43,11 +45,23 @@ const RenderItem = ({ item, onPress }) => {
 export default RenderItem;
 
 const styles = StyleSheet.create({
-    renderStyle: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", margin: 10 },
+    renderStyle: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: 10,
+        marginHorizontal: 5,
+        padding: 5,
+        borderRadius: 10
+    },
     IconStyle: {
-
-
         padding: 10
+    },
+    IconViewStyle: {
+        width: 30, height: 30, backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 15
     },
     textStyle: { color: "#fff" }
 });
