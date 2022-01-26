@@ -1,4 +1,4 @@
 export default {
-    logo: require("../assets/images/logo.png")
+    logo: require("../assets/images/check2.jpg")
 
 }
