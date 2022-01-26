@@ -1,32 +1,41 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Icon from "../../../components/Icon"
-import { Colors } from '../../../constants';
+import { Colors, Layout } from '../../../constants';
 import { useSelector } from 'react-redux';
 
-const RenderItem = ({ item, onPress }) => {
-    const [isComplete, setIsComplete] = useState(false)
-    const { isDarkMode } = useSelector(state => state.SystemReducer)
-    return (
+const RenderItem = ({ item, deleteItem, markTodoComplete }) => {
 
+    const { isDarkMode } = useSelector(state => state.SystemReducer)
+
+    console.log("renderItem", item.completed);
+
+
+
+    return (
 
         <View style={[styles.renderStyle, { backgroundColor: isDarkMode ? Colors.black5 : Colors.cartColor, }]}>
 
-            <View >
-                <Text style={[styles.textStyle, { textDecorationLine: isComplete ? "line-through" : null }]}> {item.task} </Text>
+            <View style={{ width: Layout.windowWidth / 2 + 75 }}>
+                <Text style={[styles.textStyle, { textDecorationLine: item.completed ? "line-through" : null }]}> {item.task} </Text>
 
             </View>
-            <View style={{ flexDirection: "row", }}>
-                <View style={styles.IconStyle}>
-                    <TouchableOpacity onPress={() => setIsComplete(true)}>
-                        <View style={styles.IconViewStyle}>
-                            <Icon name="check" color="green" size={20} />
 
-                        </View>
-                    </TouchableOpacity>
-                </View>
+            <View style={{ flexDirection: "row", }}>
+                {!item.completed &&
+                    <View style={styles.IconStyle}>
+                        <TouchableOpacity onPress={markTodoComplete}>
+                            <View style={styles.IconViewStyle}>
+                                <Icon name="check" color="green" size={20} />
+
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+
+                }
                 <View style={styles.IconStyle}>
-                    <TouchableOpacity onPress={onPress} >
+                    <TouchableOpacity onPress={deleteItem} >
+
                         <View style={styles.IconViewStyle} >
                             <Icon name="trash" color="red" size={20} />
 
@@ -37,6 +46,8 @@ const RenderItem = ({ item, onPress }) => {
             </View>
 
         </View>
+
+
 
 
     );
@@ -53,12 +64,15 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         padding: 5,
         borderRadius: 10
+
     },
     IconStyle: {
         padding: 10
     },
     IconViewStyle: {
-        width: 30, height: 30, backgroundColor: "#fff",
+        width: 30,
+        height: 30,
+        backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 15

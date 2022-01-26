@@ -42,18 +42,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
 
 
-
     },
     InputStyle: {
+
         flex: 1,
         borderWidth: 1,
         borderColor: Colors.white,
-        borderRadius: 20,
+        borderRadius: 10,
         margin: 10,
         justifyContent: "center",
         autoCapitalize: "characters",
-        height: Layout.windowHeight / 15
-
+        height: Layout.windowHeight / 16
     },
     IconStyle: {
         width: 50,

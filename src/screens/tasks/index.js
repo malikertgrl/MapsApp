@@ -63,6 +63,17 @@ const Task = () => {
         }
     };
 
+    const markTodoComplete = (todoId) => {
+        const newTodoItem = list.map(item => {
+            if (item.id === todoId) {
+                return { ...item, completed: true }
+            }
+            return item;
+        })
+        setList(newTodoItem)
+
+    }
+
     const deleteItem = (id) => {
         const newList = list.filter((item) => item.id !== id);
         setList(newList);
@@ -72,18 +83,12 @@ const Task = () => {
         <CustomView >
             <View>
                 <FlatList
-                    // ItemSeparatorComponent={() => {
-                    //     return (
-                    //         <View style={{ margin: 5 }} />
-
-
-                    //     )
-                    // }}
                     keyExtractor={item => item.id}
                     data={list}
                     renderItem={({ item }) =>
                         <RenderItem
-                            onPress={() => deleteItem(item.id)}
+                            deleteItem={() => deleteItem(item.id)}
+                            markTodoComplete={() => markTodoComplete(item.id)}
                             item={item} />
                     }
                 />
@@ -93,12 +98,7 @@ const Task = () => {
                     text={text}
                     onChangeText={(text) => setText(text)}
                     onPress={() => addTodo(text)} />
-
-
             </View>
-
-
-
         </CustomView>
     );
 };
@@ -107,7 +107,8 @@ export default Task;
 
 const styles = StyleSheet.create({
     taskAdd: {
-        flex: 1, justifyContent: "flex-end"
+        flex: 1, justifyContent: "flex-end",
+        marginBottom: 15
 
     }
 });
