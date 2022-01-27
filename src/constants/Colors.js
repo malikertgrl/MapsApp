@@ -5,6 +5,7 @@ export default {
     white9: "#fff9",
     black: "#000",
     black5: "#0005",
+    darkBackGroundColor: "#212121"
 
 
 }

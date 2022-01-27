@@ -40,7 +40,9 @@ export default TaskAdd;
 const styles = StyleSheet.create({
     Container: {
         flexDirection: "row",
-
+        position: "absolute",
+        marginTop: 550,
+        zIndex: 100
 
     },
     InputStyle: {

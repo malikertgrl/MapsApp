@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ToastAndroid, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import CustomView from '../../components/customView';
 import TaskAdd from "./components/TaskAdd"
@@ -93,12 +93,12 @@ const Task = () => {
                     }
                 />
             </View>
-            <View style={styles.taskAdd}>
-                <TaskAdd
-                    text={text}
-                    onChangeText={(text) => setText(text)}
-                    onPress={() => addTodo(text)} />
-            </View>
+
+            <TaskAdd
+                text={text}
+                onChangeText={(text) => setText(text)}
+                onPress={() => addTodo(text)} />
+
         </CustomView>
     );
 };
@@ -107,8 +107,11 @@ export default Task;
 
 const styles = StyleSheet.create({
     taskAdd: {
-        flex: 1, justifyContent: "flex-end",
-        marginBottom: 15
+        flex: 1,
+        justifyContent: "flex-end"
+        // position: "relatiive",
+        // marginTop: 350,
+        // zIndex: 100,
 
     }
 });

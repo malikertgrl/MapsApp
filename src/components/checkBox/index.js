@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../constants'
+import { useSelector } from 'react-redux';
 
 
 
 const CheckBox = ({ onChangeState, checked, checkedColor, checkBoxTitle }) => {
 
+    const { isDarkMode } = useSelector(state => state.SystemReducer)
 
 
 
@@ -16,7 +18,7 @@ const CheckBox = ({ onChangeState, checked, checkedColor, checkBoxTitle }) => {
                 <TouchableOpacity onPress={onChangeState}>
                     {checked ?
                         <FontAwesome5 name={"check"} size={15} color={checkedColor} />
-                        : <FontAwesome5 name={"check"} size={15} color={Colors.backGroundColor} />}
+                        : <FontAwesome5 name={"check"} size={15} color={isDarkMode ? Colors.darkBackGroundColor : Colors.backGroundColor} />}
                 </TouchableOpacity>
             </View>
             <View>

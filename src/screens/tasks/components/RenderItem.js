@@ -8,10 +8,6 @@ const RenderItem = ({ item, deleteItem, markTodoComplete }) => {
 
     const { isDarkMode } = useSelector(state => state.SystemReducer)
 
-    console.log("renderItem", item.completed);
-
-
-
     return (
 
         <View style={[styles.renderStyle, { backgroundColor: isDarkMode ? Colors.black5 : Colors.cartColor, }]}>
@@ -42,14 +38,8 @@ const RenderItem = ({ item, deleteItem, markTodoComplete }) => {
                         </View>
                     </TouchableOpacity>
                 </View>
-
             </View>
-
         </View>
-
-
-
-
     );
 };
 

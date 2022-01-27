@@ -7,7 +7,8 @@ import { Colors, Images, Layout } from "../constants"
 import DeviceInfo from 'react-native-device-info';
 import { useSelector } from "react-redux"
 import I18n from "../i18n"
-import CustomView from "../components/customView"
+import CustomView from "../components/customView";
+import CustomText from "../components/CustomText"
 
 
 const LoginScreen = ({ navigation }) => {
@@ -96,7 +97,7 @@ const LoginScreen = ({ navigation }) => {
 
                 </View>
                 <View style={[styles.versionView, { marginTop: Layout.windowHeight / 4 - 10 }]}>
-                    <Text style={styles.versionText}>v{versionNumber}</Text>
+                    <CustomText> v{versionNumber}</CustomText>
 
                 </View>
             </View>
