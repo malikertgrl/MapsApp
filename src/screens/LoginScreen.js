@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ToastAndroid } from 'react-native'
 import Input from "../components/input"
 import CustomButton from "../components/CustomButton"
 import CheckBox from '../components/checkBox'
 import { Colors, Images, Layout } from "../constants"
 import DeviceInfo from 'react-native-device-info';
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import I18n from "../i18n"
 import CustomView from "../components/customView";
 import CustomText from "../components/CustomText"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const LoginScreen = ({ navigation }) => {
@@ -17,10 +19,8 @@ const LoginScreen = ({ navigation }) => {
     const rememberMeText = I18n.t("rememberMe")
     const loginText = I18n.t("login")
 
-
-
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
+    const dispatch = useDispatch()
+    const { userInfo } = useSelector(state => state.SystemReducer)
 
     const versionNumber = DeviceInfo.getVersion();
 
@@ -31,13 +31,24 @@ const LoginScreen = ({ navigation }) => {
     })
 
 
-    const onChangeText = (key, value) => {
+    const onChangeText = async (key, value) => {
         setPageData(page => ({ ...page, [key]: value }))
+        await AsyncStorage.setItem("user", JSON.stringify(pageData))
+
     }
 
     const handleRememberMe = () => {
         setRememberMe(remember => !remember)
-        console.log({ rememberMe });
+    }
+
+    const setUser = () => {
+        if (pageData.username == "" || pageData.password == "") {
+            ToastAndroid.show(I18n.t("notBeLeftBlank"), ToastAndroid.SHORT);
+        } else {
+            console.log("elsedeyiz", pageData);
+            navigation.navigate("TabNavigator")
+        }
+
     }
 
 
@@ -93,7 +104,7 @@ const LoginScreen = ({ navigation }) => {
 
                 </View>
                 <View >
-                    <CustomButton title={loginText} onPress={() => navigation.navigate("TabNavigator")} />
+                    <CustomButton title={loginText} onPress={() => setUser()} />
 
                 </View>
                 <View style={[styles.versionView, { marginTop: Layout.windowHeight / 4 - 10 }]}>

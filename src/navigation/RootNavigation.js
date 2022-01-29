@@ -11,14 +11,14 @@ import { useSelector } from 'react-redux';
 
 const RootNavigation = () => {
     const Stack = createStackNavigator()
-    const { isDarkMode } = useSelector(state => state.SystemReducer)
+    const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
 
     useEffect(() => {
         console.log("isDarkMode", isDarkMode);
     }, [])
     return (
         <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme} >
-            <Stack.Navigator initialRouteName="LoginScreen" screenOptions={{
+            <Stack.Navigator initialRouteName={userInfo ? "TabNavigator" : "LoginScreen"} screenOptions={{
                 headerShown: false
             }}>
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />

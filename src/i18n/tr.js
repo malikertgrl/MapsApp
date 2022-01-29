@@ -5,5 +5,7 @@ export default {
     login: "Giriş Yap",
     logout: "Çıkış Yap",
     tasks: "Görev Giriniz...",
-    emptyInput: "Lütfen görev giriniz!"
+    emptyInput: "Lütfen görev giriniz!",
+    notBeLeftBlank: "Kullanıcı adı veya şifre boş bırakılamaz",
+    welcome: "Hoşgeldiniz"
 }

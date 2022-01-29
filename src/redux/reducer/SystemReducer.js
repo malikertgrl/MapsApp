@@ -2,9 +2,9 @@ import {
     TOGGLE_LOADER,
     HİDE_LOADER,
     USER_LOGOUT,
-    SET_USER,
     SET_THEME,
-    SET_LANGUAGE
+    SET_LANGUAGE,
+    SET_USER
 } from "../action/actionTypes"
 
 
@@ -26,6 +26,10 @@ export const SystemReducer = (state = initialState, action) => {
 
         case USER_LOGOUT:
             return { ...state, userInfo: {}, token: "", language: "TR", loading: false };
+
+        case SET_USER:
+            return { ...state, userInfo: action.payload }
+
         case SET_THEME:
             return { ...state, isDarkMode: action.payload };
         case SET_LANGUAGE:

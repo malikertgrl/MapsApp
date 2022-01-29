@@ -2,9 +2,9 @@ import {
     TOGGLE_LOADER,
     HİDE_LOADER,
     USER_LOGOUT,
-    SET_USER,
     SET_THEME,
-    SET_LANGUAGE
+    SET_LANGUAGE,
+    SET_USER
 } from "./actionTypes"
 
 //actionlarımızı bu şekilde dispatch edicez
@@ -36,4 +36,18 @@ export const set_theme = (payload) => (dispatch) => {
 
     });
 }
+// USER'ı set eder
 
+export const set_user = (info) => (dispatch) => {
+    dispatch({
+        type: SET_USER,
+        payload: info
+    })
+}
+
+export const user_logOut = () => (dispatch) => {
+    dispatch({
+        type: USER_LOGOUT,
+
+    })
+}
