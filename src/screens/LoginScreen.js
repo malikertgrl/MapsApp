@@ -25,7 +25,7 @@ const LoginScreen = ({ navigation }) => {
 
     const [rememberMe, setRememberMe] = useState(true)
     const [pageData, setPageData] = useState({
-        username: "malik.11@gmail.com",
+        username: "MLK2021",
         password: "123456"
     })
 
