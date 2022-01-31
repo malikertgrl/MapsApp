@@ -17,9 +17,7 @@ const Input = ({
     const [isShownSecureIcon, setIsShownSecureIcon] = useState(false)
 
 
-    useEffect(() => {
-        console.log("ınput")
-    }, [])
+
 
     return (
         <View style={styles.containerStyle}>

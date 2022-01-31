@@ -18,7 +18,7 @@ const Task = () => {
     const getTasks = async () => {
 
         const userTasks = await AsyncStorage.getItem(listKey)
-        console.log("userTasks", userTasks);
+        // console.log("userTasks", userTasks);
         if (userTasks) {
 
             const parseJson = JSON.parse(userTasks)

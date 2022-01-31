@@ -28,7 +28,7 @@ const Profile = ({ navigation }) => {
     return (
         <CustomView>
             <View style={{ alignItems: "center", marginTop: 10 }}>
-                <CustomText>{I18n.t("welcome")} {userInfo.username} </CustomText>
+                <CustomText>{I18n.t("welcome")} {userInfo?.username} </CustomText>
 
             </View>
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
