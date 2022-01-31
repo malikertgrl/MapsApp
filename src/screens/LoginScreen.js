@@ -10,7 +10,7 @@ import I18n from "../i18n"
 import CustomView from "../components/customView";
 import CustomText from "../components/CustomText"
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { set_user } from "../redux/action"
 
 
 const LoginScreen = ({ navigation }) => {
@@ -20,7 +20,6 @@ const LoginScreen = ({ navigation }) => {
     const loginText = I18n.t("login")
 
     const dispatch = useDispatch()
-    const { userInfo } = useSelector(state => state.SystemReducer)
 
     const versionNumber = DeviceInfo.getVersion();
 
@@ -31,9 +30,8 @@ const LoginScreen = ({ navigation }) => {
     })
 
 
-    const onChangeText = async (key, value) => {
+    const onChangeText = (key, value) => {
         setPageData(page => ({ ...page, [key]: value }))
-        await AsyncStorage.setItem("user", JSON.stringify(pageData))
 
     }
 
@@ -41,15 +39,18 @@ const LoginScreen = ({ navigation }) => {
         setRememberMe(remember => !remember)
     }
 
-    const setUser = () => {
+    const setUser = async () => {
         if (pageData.username == "" || pageData.password == "") {
             ToastAndroid.show(I18n.t("notBeLeftBlank"), ToastAndroid.SHORT);
         } else {
-            console.log("elsedeyiz", pageData);
+            // console.log("elsedeyiz", pageData);
+            await AsyncStorage.setItem("user", JSON.stringify(pageData))
+
+            dispatch(set_user(pageData))
             navigation.navigate("TabNavigator")
         }
-
     }
+
 
 
 

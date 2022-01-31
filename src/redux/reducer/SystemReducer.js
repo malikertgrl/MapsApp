@@ -25,7 +25,7 @@ export const SystemReducer = (state = initialState, action) => {
             return { ...state, loading: false };
 
         case USER_LOGOUT:
-            return { ...state, userInfo: {}, token: "", language: "TR", loading: false };
+            return { ...state, userInfo: {} };
 
         case SET_USER:
             return { ...state, userInfo: action.payload }

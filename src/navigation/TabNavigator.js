@@ -12,10 +12,11 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
     const { isDarkMode } = useSelector(state => state.SystemReducer)
     return (
-        <Tab.Navigator screenOptions={{
-            tabBarActiveTintColor: isDarkMode ? "red" : Colors.backGroundColor,
-            headerTitleAlign: "center"
-        }} >
+        <Tab.Navigator initialRouteName="Profile"
+            screenOptions={{
+                tabBarActiveTintColor: isDarkMode ? "red" : Colors.backGroundColor,
+                headerTitleAlign: "center"
+            }} >
             <Tab.Screen name="Home" component={Home} options={{
                 tabBarIcon: ({ color, size }) => (
                     <Icon name="home" color={color} size={size} />
