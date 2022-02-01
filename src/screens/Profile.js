@@ -7,10 +7,7 @@ import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
 import I18n from "../i18n";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-// import RNPickerSelect from 'react-native-picker-select';
-
+import Picker from '../components/pickerSelect';
 
 
 const Profile = ({ navigation }) => {
@@ -47,6 +44,21 @@ const Profile = ({ navigation }) => {
                 <CustomText>{I18n.t("welcome")} {userInfo.username} </CustomText>
 
             </View>
+            <View>
+                <Picker
+                    onValueChange={(value) => console.log(value)}
+                    placeHolder={{
+                        label: 'Dil Seciniz..',
+                        value: null
+                    }}
+                    items={[
+                        { label: 'Türkçe', value: 'tr', },
+                        { label: 'İngilizce', value: 'en', },
+                    ]}
+                />
+
+            </View>
+
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <CustomText> Tema Seçimi </CustomText>
                 <Switch
