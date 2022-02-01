@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { set_theme, user_logOut, set_user } from '../redux/action';
 import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
-import I18n from "../i18n"
+import I18n from "../i18n";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // import RNPickerSelect from 'react-native-picker-select';
 
@@ -14,18 +15,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Profile = ({ navigation }) => {
     const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
-    const [userData, setUserData] = useState([])
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        console.log(userInfo, "boş mu");
+    }, [userInfo])
 
-    const getUserInfo = async () => {
-        const getData = await AsyncStorage.getItem("user")
-        // console.log(getData);
-        if (getData != null) {
-            const parseData = JSON.parse(getData)
-            setUserData(parseData)
-        }
-    }
 
     const toggle_theme = (val) => {
         dispatch(set_theme(val))
@@ -45,14 +40,11 @@ const Profile = ({ navigation }) => {
     }
 
 
-    useLayoutEffect(() => {
-        getUserInfo()
-    }, [])
 
     return (
         <CustomView>
             <View style={{ alignItems: "center", marginTop: 10 }}>
-                <CustomText>{I18n.t("welcome")} {userInfo?.username} </CustomText>
+                <CustomText>{I18n.t("welcome")} {userInfo.username} </CustomText>
 
             </View>
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>

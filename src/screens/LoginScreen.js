@@ -9,8 +9,9 @@ import { useDispatch, useSelector } from "react-redux"
 import I18n from "../i18n"
 import CustomView from "../components/customView";
 import CustomText from "../components/CustomText"
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { set_user } from "../redux/action"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const LoginScreen = ({ navigation }) => {
@@ -19,20 +20,20 @@ const LoginScreen = ({ navigation }) => {
     const rememberMeText = I18n.t("rememberMe")
     const loginText = I18n.t("login")
 
+
     const dispatch = useDispatch()
 
     const versionNumber = DeviceInfo.getVersion();
 
     const [rememberMe, setRememberMe] = useState(true)
     const [pageData, setPageData] = useState({
-        username: "MLK2021",
+        username: "",
         password: "123456"
     })
 
 
     const onChangeText = (key, value) => {
         setPageData(page => ({ ...page, [key]: value }))
-
     }
 
     const handleRememberMe = () => {
@@ -51,8 +52,19 @@ const LoginScreen = ({ navigation }) => {
         }
     }
 
+    const getUserInfo = async () => {
+        const getData = await AsyncStorage.getItem("user")
+        // console.log(getData);
+        if (getData != null) {
+            const parseData = JSON.parse(getData)
+            setPageData(parseData)
+        }
+    }
 
 
+    useEffect(() => {
+        getUserInfo()
+    }, [])
 
 
     return (
