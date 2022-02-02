@@ -16,10 +16,10 @@ const Profile = ({ navigation }) => {
     const { isDarkMode, userInfo, language } = useSelector(state => state.SystemReducer)
     const dispatch = useDispatch();
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     console.log("language", language);
-    // }, [language])
+        console.log("language", language);
+    }, [language])
 
 
     const toggle_theme = (val) => {
@@ -42,6 +42,7 @@ const Profile = ({ navigation }) => {
     const setLanguage = (val) => {
         dispatch(set_language(val))
         changeLang(val)
+
     }
 
 

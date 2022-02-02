@@ -10,7 +10,7 @@ I18n.translations = {
     en,
 }
 
-I18n.locales.no = "en"
+// I18n.locales.no = "en"
 
 export const locales = RnLocalize.getLocales();
 // const { language } = useSelector(state => state.SystemReducer)

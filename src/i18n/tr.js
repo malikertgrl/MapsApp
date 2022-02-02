@@ -7,5 +7,7 @@ export default {
     tasks: "Görev Giriniz...",
     emptyInput: "Lütfen görev giriniz!",
     notBeLeftBlank: "Kullanıcı adı veya şifre boş bırakılamaz",
-    welcome: "Hoşgeldiniz"
+    welcome: "Hoşgeldiniz",
+    save_work: "Çalışmamı Kaydet"
+
 }

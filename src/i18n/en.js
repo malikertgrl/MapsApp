@@ -7,7 +7,8 @@ export default {
     tasks: "Enter Task...",
     emptyInput: "Please enter task!",
     notBeLeftBlank: "Username or password cannot be left blank.",
-    welcome: "Welcome"
+    welcome: "Welcome",
+    save_work: "Save My Work"
 
 
 }

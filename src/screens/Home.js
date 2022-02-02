@@ -74,7 +74,7 @@ const Home = () => {
 
 
                 <CustomButton
-                    title={"Çalışmayı Kaydet"}
+                    title={I18n.t("save_work")}
                 />
             </View>
 

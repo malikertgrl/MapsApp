@@ -7,6 +7,7 @@ const Picker = ({ placeHolder, items, onValueChange }) => {
     return (
         <View style={{ borderWidth: 1, borderColor: "white", margin: 5, borderRadius: 10 }}>
             <RNPickerSelect
+                // useNativeAndroidPickerStyle={false}
                 placeholder={
                     placeHolder
                 }
