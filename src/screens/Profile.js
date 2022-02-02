@@ -2,21 +2,24 @@ import { StyleSheet, Text, View, Switch } from 'react-native';
 import React, { useLayoutEffect, useEffect, useState } from 'react';
 import CustomView from '../components/customView';
 import { useSelector, useDispatch } from 'react-redux';
-import { set_theme, user_logOut, set_user } from '../redux/action';
+import { set_theme, user_logOut, set_user, set_language } from '../redux/action';
 import CustomText from '../components/CustomText';
 import CustomButton from '../components/CustomButton';
-import I18n from "../i18n";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Picker from '../components/pickerSelect';
+import I18n, { changeLang } from "../i18n"
+
+
 
 
 const Profile = ({ navigation }) => {
-    const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
+    const { isDarkMode, userInfo, language } = useSelector(state => state.SystemReducer)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log(userInfo, "boş mu");
-    }, [userInfo])
+    // useEffect(() => {
+
+    //     console.log("language", language);
+    // }, [language])
 
 
     const toggle_theme = (val) => {
@@ -36,6 +39,11 @@ const Profile = ({ navigation }) => {
         navigation.navigate("LoginScreen")
     }
 
+    const setLanguage = (val) => {
+        dispatch(set_language(val))
+        changeLang(val)
+    }
+
 
 
     return (
@@ -46,7 +54,7 @@ const Profile = ({ navigation }) => {
             </View>
             <View>
                 <Picker
-                    onValueChange={(value) => console.log(value)}
+                    onValueChange={(val) => setLanguage(val)}
                     placeHolder={{
                         label: 'Dil Seciniz..',
                         value: null

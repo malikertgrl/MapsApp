@@ -44,10 +44,19 @@ export const set_user = (info) => (dispatch) => {
         payload: info
     })
 }
-
+// user objesini boşaltır
 export const user_logOut = () => (dispatch) => {
     dispatch({
         type: USER_LOGOUT,
 
+    })
+}
+
+// dili set eder
+
+export const set_language = (lang) => (dispatch) => {
+    dispatch({
+        type: SET_LANGUAGE,
+        payload: lang
     })
 }
