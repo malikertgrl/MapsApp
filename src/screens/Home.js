@@ -21,6 +21,11 @@ const Home = () => {
     const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
 
 
+    const setDescription = (text) => {
+        const newMission = { ...mission, description: text }
+        setMission(newMission)
+        console.log("newMissio", mission);
+    }
 
     return (
         <CustomView >
@@ -61,21 +66,15 @@ const Home = () => {
                         ]}
                     />
                 </View>
-
-
-
                 <Input
                     placeholder={I18n.t("enter_description")}
                     placeholderTextColor={"white"}
-
+                    onChangeText={(text) => setDescription(text)}
                     value={mission.description}
                 />
 
-
-
-
-
                 <CustomButton
+                    onPress={() => { }}
                     title={I18n.t("save_work")}
                 />
             </View>
