@@ -12,7 +12,7 @@ const initialState = {
     loading: false,
     userInfo: {},
     token: "",
-    language: "tr",
+    language: "en",
     isDarkMode: false
 };
 

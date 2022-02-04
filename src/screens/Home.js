@@ -28,11 +28,11 @@ const Home = () => {
                 <View style={{ margin: 10, alignItems: "center" }}>
                     <CustomText style={{ fontSize: 25 }}> {I18n.t("welcome")} {userInfo.username} </CustomText>
                 </View>
-                <View>
+                <View style={{ marginBottom: 20 }}>
                     <Picker
                         onValueChange={(value) => console.log(value)}
                         placeHolder={{
-                            label: 'Proje',
+                            label: I18n.t("project"),
                             value: null
                         }}
                         items={[
@@ -40,11 +40,13 @@ const Home = () => {
                             { label: 'TodoApp', value: 'TodoApp', },
                         ]}
                     />
+                </View>
 
+                <View>
                     <Picker
                         onValueChange={(value) => console.log(value)}
                         placeHolder={{
-                            label: 'Saat seçiniz...',
+                            label: I18n.t("select_time"),
                             value: null
                         }}
                         items={[
@@ -58,17 +60,17 @@ const Home = () => {
 
                         ]}
                     />
-
-
-
                 </View>
 
+
+
                 <Input
-                    placeholder={"Açıklama giriniz..."}
+                    placeholder={I18n.t("enter_description")}
                     placeholderTextColor={"white"}
 
                     value={mission.description}
                 />
+
 
 
 

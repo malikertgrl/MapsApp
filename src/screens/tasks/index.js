@@ -58,7 +58,7 @@ const Task = () => {
                 task: text,
                 completed: false
             };
-            setList([newItem, ...list]);
+            setList([...list, newItem]);
             setText("")
         }
     };

@@ -40,8 +40,11 @@ const Profile = ({ navigation }) => {
     }
 
     const setLanguage = (val) => {
-        dispatch(set_language(val))
-        changeLang(val)
+        if (val) {
+            dispatch(set_language(val))
+            changeLang(val)
+        }
+
 
     }
 
@@ -55,6 +58,7 @@ const Profile = ({ navigation }) => {
             </View>
             <View>
                 <Picker
+                    value={language}
                     onValueChange={(val) => setLanguage(val)}
                     placeHolder={{
                         label: 'Dil Seciniz..',
@@ -69,7 +73,7 @@ const Profile = ({ navigation }) => {
             </View>
 
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <CustomText> Tema Seçimi </CustomText>
+                <CustomText> {I18n.t("dark_mode")} </CustomText>
                 <Switch
                     onValueChange={val => toggle_theme(val)}
                     value={isDarkMode}

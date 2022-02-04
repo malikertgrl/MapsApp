@@ -5,17 +5,18 @@ import en from "./en"
 import tr from "./tr"
 
 
-I18n.translations = {
+const translations = {
     tr,
     en,
 }
 
-// I18n.locales.no = "en"
 
-export const locales = RnLocalize.getLocales();
+const locales = RnLocalize.getLocales();
 // const { language } = useSelector(state => state.SystemReducer)
 
-export const changeLang = (val) => {
+I18n.locale = locales[0].languageTag
+
+export const changeLang = val => {
     I18n.locale = val
 }
 
@@ -30,7 +31,9 @@ I18nManager.forceRTL = isRtl; //ugulama rtl sini locales rtl sine göre ayarlad�
 
 I18n.fallbacks = true;// çevirimizde ilk dil tercihimizin karşılığı yoksa 2. yi alıyor
 
+I18n.locales.no = "tr"
 
+I18n.translations = translations;
 
 
 export default I18n

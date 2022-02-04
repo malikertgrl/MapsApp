@@ -8,6 +8,14 @@ export default {
     emptyInput: "Lütfen görev giriniz!",
     notBeLeftBlank: "Kullanıcı adı veya şifre boş bırakılamaz",
     welcome: "Hoşgeldiniz",
-    save_work: "Çalışmamı Kaydet"
+    save_work: "Çalışmamı Kaydet",
+    dark_mode: "Karanlık Tema ",
+    home: "Anasayfa",
+    profile: "Profil",
+    task: "Görevler",
+    select_time: "Saat seçiniz",
+    enter_description: "Açıklama giriniz",
+    project: "Proje",
+
 
 }
