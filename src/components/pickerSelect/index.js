@@ -1,29 +1,27 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 
 const Picker = ({ placeHolder, items, onValueChange, value }) => {
     return (
-        <View style={{ borderWidth: 1, borderColor: "white", margin: 5, borderRadius: 10 }}>
+        <View style={{ borderWidth: 1, borderColor: "white", margin: 5, borderRadius: 10, }}>
             <RNPickerSelect
                 useNativeAndroidPickerStyle={false}
                 value={value}
                 placeholder={
                     placeHolder
                 }
-                textInputProps={{ underlineColor: 'yellow' }}
-                placeholderTextColor="red"
                 onValueChange={onValueChange}
                 items={items}
                 Icon={() => {
-                    return <Ionicons name="arrow-down" size={24} color="white" />;
+                    return <FontAwesome5 name="sort-down" size={24} color="white" />;
                 }}
                 style={{
                     iconContainer: {
-                        top: 10,
-                        right: 12,
+                        top: 7,
+                        right: 10,
                     },
                     inputAndroid: {
                         fontSize: 16,

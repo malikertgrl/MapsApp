@@ -16,7 +16,7 @@ export default {
     select_time: "Select Time",
     enter_description: "Enter Description",
     project: "Project",
-
+    choice_lang: "Select language"
 
 
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Switch } from 'react-native';
+import { StyleSheet, Text, View, Switch, Image } from 'react-native';
 import React, { useLayoutEffect, useEffect, useState } from 'react';
 import CustomView from '../components/customView';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import CustomButton from '../components/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Picker from '../components/pickerSelect';
 import I18n, { changeLang } from "../i18n"
-
+import { Colors, Images, Layout } from "../constants"
 
 
 
@@ -51,35 +51,51 @@ const Profile = ({ navigation }) => {
 
 
     return (
-        <CustomView>
-            <View style={{ alignItems: "center", marginTop: 10 }}>
-                <CustomText>{I18n.t("welcome")} {userInfo.username} </CustomText>
+        <CustomView >
+            <View style={{ alignItems: "center", }}>
+                <View style={{ marginTop: 10, }}>
+                    <CustomText>{I18n.t("welcome")} {userInfo.username} </CustomText>
 
+                </View>
+                <View style={{ margin: 10 }}>
+                    <Image
+                        source={require("../assets/images/sadface2.jpg")}
+                        style={{ width: 150, height: 150, borderRadius: 75 }}
+                    />
+                </View>
+
+
+
+                <View style={{ flexDirection: "row", alignItems: "center", margin: 15 }}>
+                    <CustomText> {I18n.t("choice_lang")} </CustomText>
+                    <Picker
+                        value={language}
+                        onValueChange={(val) => setLanguage(val)}
+                        placeHolder={{
+                            label: 'Dil Seciniz..',
+                            value: null
+                        }}
+                        items={[
+                            { label: 'Türkçe', value: 'tr', },
+                            { label: 'İngilizce', value: 'en', },
+                        ]}
+                    />
+
+                </View>
+
+                <View style={{ flexDirection: "row", margin: 15 }}>
+                    <CustomText> {I18n.t("dark_mode")} </CustomText>
+                    <Switch
+                        onValueChange={val => toggle_theme(val)}
+                        value={isDarkMode}
+                    />
+                </View>
             </View>
             <View>
-                <Picker
-                    value={language}
-                    onValueChange={(val) => setLanguage(val)}
-                    placeHolder={{
-                        label: 'Dil Seciniz..',
-                        value: null
-                    }}
-                    items={[
-                        { label: 'Türkçe', value: 'tr', },
-                        { label: 'İngilizce', value: 'en', },
-                    ]}
-                />
+                <CustomButton title={I18n.t("logout")} onPress={() => logOut()} />
 
             </View>
 
-            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <CustomText> {I18n.t("dark_mode")} </CustomText>
-                <Switch
-                    onValueChange={val => toggle_theme(val)}
-                    value={isDarkMode}
-                />
-            </View>
-            <CustomButton title={I18n.t("logout")} onPress={() => logOut()} />
         </CustomView>
 
     );

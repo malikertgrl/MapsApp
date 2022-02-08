@@ -16,6 +16,8 @@ export default {
     select_time: "Saat seçiniz",
     enter_description: "Açıklama giriniz",
     project: "Proje",
+    choice_lang: "Dil Seçiniz"
+
 
 
 }
