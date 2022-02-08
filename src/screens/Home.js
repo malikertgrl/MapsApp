@@ -21,7 +21,9 @@ const Home = () => {
     const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
 
 
-
+    const onChangeText = (key, value) => {
+        setPageData(page => ({ ...page, [key]: value }))
+    }
 
 
     const setDescription = (text) => {
