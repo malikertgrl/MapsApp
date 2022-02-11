@@ -6,27 +6,36 @@ import LoginScreen from '../screens/LoginScreen';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import TabNavigator from "./TabNavigator"
 import { useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 
 const RootNavigation = () => {
     const Stack = createStackNavigator()
-    const { isDarkMode, userInfo } = useSelector(state => state.SystemReducer)
+    const { isDarkMode, userInfo, isLogin } = useSelector(state => state.SystemReducer)
+
+
 
     useEffect(() => {
-        console.log("userInfo", userInfo);
-    }, [])
+        console.log("isLogin", isLogin)
+    }, [isLogin])
 
 
     return (
         <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme} >
-            <Stack.Navigator initialRouteName="LoginScreen" //{userInfo != null ? "TabNavigator" : "LoginScreen"}
+            <Stack.Navigator initialRouteName={isLogin ? "TabNavigator" : "LoginScreen"}
                 screenOptions={{
                     headerShown: false
                 }}>
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                <Stack.Screen name="TabNavigator" component={TabNavigator} />
+                {isLogin ?
+                    <Stack.Screen name="TabNavigator" component={TabNavigator} />
+                    :
+                    <Stack.Screen name="LoginScreen" component={LoginScreen} />
+
+                }
+
+
             </Stack.Navigator>
         </NavigationContainer>
     );

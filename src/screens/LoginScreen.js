@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 import I18n from "../i18n"
 import CustomView from "../components/customView";
 import CustomText from "../components/CustomText"
-import { set_user } from "../redux/action"
+import { set_user, } from "../redux/action"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -44,11 +44,8 @@ const LoginScreen = ({ navigation }) => {
         if (pageData.username == "" || pageData.password == "") {
             ToastAndroid.show(I18n.t("notBeLeftBlank"), ToastAndroid.SHORT);
         } else {
-            // console.log("elsedeyiz", pageData);
             await AsyncStorage.setItem("user", JSON.stringify(pageData))
-
             dispatch(set_user(pageData))
-            navigation.navigate("TabNavigator")
         }
     }
 
@@ -100,9 +97,7 @@ const LoginScreen = ({ navigation }) => {
                                 placeholder={passwordText}
                                 placeholderTextColor={Colors.white9}
                                 secureIcon={true}
-
                             />
-
                         </View>
 
                     </View>

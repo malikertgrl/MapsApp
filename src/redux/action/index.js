@@ -4,7 +4,8 @@ import {
     USER_LOGOUT,
     SET_THEME,
     SET_LANGUAGE,
-    SET_USER
+    SET_USER,
+    SET_LOGİN
 } from "./actionTypes"
 
 //actionlarımızı bu şekilde dispatch edicez
@@ -58,5 +59,14 @@ export const set_language = (lang) => (dispatch) => {
     dispatch({
         type: SET_LANGUAGE,
         payload: lang
+    })
+}
+
+// login'i set eder
+
+export const set_login = (val) => (dispatch) => {
+    dispatch({
+        type: SET_LOGİN,
+        payload: val
     })
 }

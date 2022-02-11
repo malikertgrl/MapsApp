@@ -4,7 +4,8 @@ import {
     USER_LOGOUT,
     SET_THEME,
     SET_LANGUAGE,
-    SET_USER
+    SET_USER,
+    SET_LOGİN
 } from "../action/actionTypes"
 
 
@@ -13,7 +14,8 @@ const initialState = {
     userInfo: {},
     token: "",
     language: "en",
-    isDarkMode: false
+    isDarkMode: false,
+    isLogin: false
 };
 
 export const SystemReducer = (state = initialState, action) => {
@@ -25,15 +27,17 @@ export const SystemReducer = (state = initialState, action) => {
             return { ...state, loading: false };
 
         case USER_LOGOUT:
-            return { ...state, userInfo: {} };
+            return { ...state, userInfo: {}, isLogin: false };
 
         case SET_USER:
-            return { ...state, userInfo: action.payload }
+            return { ...state, userInfo: action.payload, isLogin: true }
 
         case SET_THEME:
             return { ...state, isDarkMode: action.payload };
         case SET_LANGUAGE:
             return { ...state, language: action.payload };
+        case SET_LOGİN:
+            return { ...state, isLogin: action.payload };
 
         default:
             return state;

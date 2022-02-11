@@ -22,25 +22,29 @@ const Home = () => {
 
 
     const onChangeText = (key, value) => {
-        setPageData(page => ({ ...page, [key]: value }))
+        setMission(mission => ({ ...mission, [key]: value }))
     }
 
 
-    const setDescription = (text) => {
-        const newMission = { ...mission, description: text }
-        setMission(newMission)
-        console.log("newMissio", mission);
+    const saveMission = () => {
+        const newMission = {}
+        console.log(mission);
     }
+    // const setDescription = (text) => {
+    //     const newMission = { ...mission, description: text }
+    //     setMission(newMission)
+    //     console.log("newMissio", mission);
+    // }
 
     return (
         <CustomView >
             <View style={{ margin: 10, }}>
                 <View style={{ margin: 10, alignItems: "center" }}>
-                    <CustomText style={{ fontSize: 25 }}> {I18n.t("welcome")} {userInfo.username} </CustomText>
+                    <CustomText style={{ fontSize: 25 }}> {I18n.t("welcome")} {userInfo?.username} </CustomText>
                 </View>
                 <View style={{ marginBottom: 20 }}>
                     <Picker
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) => onChangeText("project", value)}
                         placeHolder={{
                             label: I18n.t("project"),
                             value: null
@@ -55,7 +59,7 @@ const Home = () => {
 
                 <View>
                     <Picker
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) => onChangeText("hour", value)}
                         placeHolder={{
                             label: I18n.t("select_time"),
                             value: null
@@ -75,12 +79,12 @@ const Home = () => {
                 <Input
                     placeholder={I18n.t("enter_description")}
                     placeholderTextColor={"white"}
-                    onChangeText={(text) => setDescription(text)}
+                    onChangeText={(text) => onChangeText("description", text)}
                     value={mission.description}
                 />
 
                 <CustomButton
-                    onPress={() => { }}
+                    onPress={() => saveMission()}
                     title={I18n.t("save_work")}
                 />
             </View>
